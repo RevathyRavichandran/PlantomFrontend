@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-lg-11">
+    <h2 mat-dialog-title>Search area</h2>
+  </div>
+  <div class="col-lg-1">
+    <button
+      mat-button
+      class="close-icon pull-right"
+      mat-dialog-close
+      style="background-color: white"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-lg-11">
+    <div class="form-group">
+      <input type="text" placeholder="Search" class="form-control" [(ngModel)]="value"/>
+    </div>
+  </div>
+  <div class="col-lg-1">
+    <button mat-button style="color: white; background-color: #242437" (click)="submit()">
+      Submit
+    </button>
+  </div>
+</div>
+<br />
+<agm-map [latitude]="lat" [longitude]="lng" (mapReady)="mapReadyHandler($event)">
+  <agm-marker [latitude]="lat" [longitude]="lng">
+    <agm-info-window>
+      <strong>InfoWindow content</strong>
+    </agm-info-window>
+  </agm-marker>
+</agm-map>

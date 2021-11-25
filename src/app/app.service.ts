@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class AppService {
-  dburl = "http://localhost:8080/api/";
+  dburl = "/api/";
   weburl = "https://api.countrystatecity.in/v1/countries";
   apikey = "eTZiYVBsQXZRMFBYdE1McEhuZ1M3VG1PM0N2VGYyajdPb004OWFTaA==";
 
@@ -54,6 +54,10 @@ export class AppService {
       this.weburl + "/" + country + "/states/" + state + "/cities",
       { headers: headers }
     );
+  }
+
+  public getAddress(lat, lng): Observable<any> {
+    return this.http.get<any>(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyD0QFV-2oAVVgMt924mDv0R-5uGjSMcc84`);
   }
 
   constructor(private http: HttpClient) {}

@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { Validators } from "@angular/forms";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { AppService } from "../app.service";
+import { GoogleMapComponent } from "../google-map/google-map.component";
 
 @Component({
   selector: "app-edit",
@@ -78,11 +79,25 @@ export class EditComponent implements OnInit {
     );
   }
 
+  loadArea() {
+    const dialogRef = this.dialog.open(GoogleMapComponent, {
+      width: "80%",
+      disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        this.labForm.get('area').setValue(result);
+      }
+    });
+  }
+
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private appService: AppService
+    private appService: AppService,
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -91,6 +106,8 @@ export class EditComponent implements OnInit {
         (res) => {
           let { _id, __v, ...val } = res;
           this.labForm.setValue(val);
+          this.loadState(val.country);
+          this.loadCity(val.country, val.state);
         },
         (err) => {
           console.log("err", err);
