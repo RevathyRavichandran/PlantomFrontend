@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  width: 90%;
+  margin: auto;
+}
+
+.set-margin {
+  margin: 2rem auto;
+}
+
+.mat-header-cell {
+  font-weight: bolder;
+  font-size: 14px;
+  color: white;
+  background-color: #242437;
+}
+
+.mat-icon {
+  cursor: pointer;
+}

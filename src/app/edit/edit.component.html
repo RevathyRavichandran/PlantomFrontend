@@ -1,0 +1,168 @@
+<div class="row">
+  <div class="col-lg-11">
+    <h2 mat-dialog-title *ngIf="data; else fail">Edit Lab</h2>
+    <ng-template #fail>
+      <h2 mat-dialog-title>Create Lab</h2>
+    </ng-template>
+  </div>
+  <div class="col-lg-1">
+    <button
+      mat-button
+      class="close-icon pull-right"
+      mat-dialog-close
+      style="background-color: white"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<hr />
+<form [formGroup]="labForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="form-group">
+        <label>Lab Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="labname"
+          required
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" class="form-control" formControlName="email" />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>GST No.</label>
+        <input type="text" class="form-control" formControlName="gstno" />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Country</label>
+        <select
+          class="form-control"
+          formControlName="country"
+          (change)="loadState($event.target.value)"
+        >
+          <option *ngFor="let country of countries" [value]="country.iso2">
+            {{ country.name }}
+          </option>
+        </select>
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Area</label>
+        <input type="text" class="form-control" formControlName="area" />
+      </div>
+      <br />
+      <button
+        mat-button
+        type="submit"
+        style="background-color: #242437; color: white"
+      >
+        Submit
+      </button>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <label>Contact Name</label>
+        <input type="text" class="form-control" formControlName="contactname" />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Website URL</label>
+        <input type="text" class="form-control" formControlName="websiteurl" />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Service at Home</label>
+        <select class="form-control" formControlName="serviceathome">
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+      <br />
+      <div class="form-group">
+        <label>State</label>
+        <select
+          class="form-control"
+          formControlName="state"
+          (change)="
+            loadCity(this.labForm.get('country').value, $event.target.value)
+          "
+        >
+          <option *ngFor="let state of states" [value]="state.iso2">
+            {{ state.name }}
+          </option>
+        </select>
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Land Mark</label>
+        <input type="text" class="form-control" formControlName="landmark" />
+      </div>
+      <br />
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <label>Contact No (Primary)</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="contactnopri"
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Register No.</label>
+        <input type="text" class="form-control" formControlName="registerno" />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Lab Services</label>
+        <select class="form-control" formControlName="labservices">
+          <option>Full body checkup</option>
+        </select>
+      </div>
+      <br />
+      <div class="form-group">
+        <label>City</label>
+        <select class="form-control" formControlName="city">
+          <option *ngFor="let city of cities" [value]="city.iso2">
+            {{ city.name }}
+          </option>
+        </select>
+      </div>
+      <br />
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <label>Contact No (Secondary)</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="contactnosec"
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Pan No.</label>
+        <input type="text" class="form-control" formControlName="panno" />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Package Cost</label>
+        <input type="text" class="form-control" formControlName="packagecost" />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Pincode</label>
+        <input type="text" class="form-control" formControlName="pincode" />
+      </div>
+      <br />
+    </div>
+  </div>
+</form>

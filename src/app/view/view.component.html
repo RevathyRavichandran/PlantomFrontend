@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Lab Information</h2>
+<mat-dialog-content>
+  <table class="table borderless">
+    <tbody>
+      <tr>
+        <td><h3 class="text-right">Lab Name:</h3></td>
+        <td>
+          <h3>{{ data.labname }}</h3>
+        </td>
+      </tr>
+      <tr>
+        <td><h3 class="text-right">Contact Name :</h3></td>
+        <td>
+          <h3>{{ data.contactname }}</h3>
+        </td>
+      </tr>
+      <tr>
+        <td><h3 class="text-right">Contact No :</h3></td>
+        <td>
+          <h3>{{ data.contactnopri }}</h3>
+        </td>
+      </tr>
+      <tr>
+        <td><h3 class="text-right">Email :</h3></td>
+        <td>
+          <h3>{{ data.email }}</h3>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button
+    mat-button
+    mat-dialog-close
+    style="background-color: #242437; color: white"
+  >
+    Close
+  </button>
+</mat-dialog-actions>

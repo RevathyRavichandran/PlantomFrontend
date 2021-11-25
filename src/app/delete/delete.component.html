@@ -1,0 +1,15 @@
+<div mat-dialog-content>
+  <h3>Are you sure, you want to delete this lab?</h3>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">
+    <mat-icon>cancel</mat-icon> No Thanks
+  </button>
+  <button
+    mat-raised-button
+    style="background-color: #242437; color: white"
+    (click)="ok()"
+  >
+    <mat-icon>check_circle</mat-icon> Yes
+  </button>
+</div>
